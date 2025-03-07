@@ -1,0 +1,176 @@
+{
+    "100": {
+        "name": "Fully randomized power draft",
+        "values": {
+            "1": {
+                "name": "Off",
+                "tmdisplay": ""
+            },
+            "2": {
+                "name": "On",
+                "tmdisplay": ""
+            }
+        },
+        "default": 2
+    },
+    "101": {
+        "name": "Fox power",
+        "values": {
+            "1": {
+                "name": "Random"
+            },
+            "2": {
+                "name": "Side A : When placing cards, you may place the final card face down underneath your visible Animal card. During final scoring, it counts as an animal type of your choice.",
+                "tmdisplay": ""
+            },
+            "3": {
+                "name": "Side B : When placing cards, you may place the final card underneath your personal pile.",
+                "tmdisplay": ""
+            }
+        },
+        "displaycondition": [
+            {
+                "type": "otheroption",
+                "id": 100,
+                "value": 1
+            }
+        ],
+        "default": 1
+    },
+    "102": {
+        "name": "Moose power",
+        "values": {
+            "1": {
+                "name": "Random"
+            },
+            "2": {
+                "name": "Side A : Increase or decrease your draw value by 1.",
+                "tmdisplay": ""
+            },
+            "3": {
+                "name": "Side B : Increase or decrease your placement value by 1.",
+                "tmdisplay": ""
+            }
+        },
+        "displaycondition": [
+            {
+                "type": "otheroption",
+                "id": 100,
+                "value": 1
+            }
+        ],
+        "default": 1
+    },
+    "103": {
+        "name": "Walrus power",
+        "values": {
+            "1": {
+                "name": "Random"
+            },
+            "2": {
+                "name": "Side A : Move the token corresponding to the main animal 1 extra card in the direction of your choice.",
+                "tmdisplay": ""
+            },
+            "3": {
+                "name": "Side B : Move the token corresponding to the companion animal 1 extra card in the direction of your choice.",
+                "tmdisplay": ""
+            }
+        },
+        "displaycondition": [
+            {
+                "type": "otheroption",
+                "id": 100,
+                "value": 1
+            }
+        ],
+        "default": 1
+    },
+    "104": {
+        "name": "Orca power",
+        "values": {
+            "1": {
+                "name": "Random"
+            },
+            "2": {
+                "name": "Side A : Immediately refill the River after each card you take.",
+                "tmdisplay": ""
+            },
+            "3": {
+                "name": "Side B : When drawing cards, you may take 1 or more face-down cards from the top of the common draw pile.",
+                "tmdisplay": ""
+            }
+        },
+        "displaycondition": [
+            {
+                "type": "otheroption",
+                "id": 100,
+                "value": 1
+            }
+        ],
+        "default": 1
+    },
+    "105": {
+        "name": "Puffin power",
+        "values": {
+            "1": {
+                "name": "Random"
+            },
+            "2": {
+                "name": "Side A : Before placing your cards, swap a card from your Hand with a card from the River.",
+                "tmdisplay": ""
+            },
+            "3": {
+                "name": "Side B : Before placing your cards, take your visible Animal card back into your hand. Careful, because you now have a new placement value this turn. If you don't have a visible Animal card, your placement value is considered to be 1",
+                "tmdisplay": ""
+            }
+        },
+        "displaycondition": [
+            {
+                "type": "otheroption",
+                "id": 100,
+                "value": 1
+            }
+        ],
+        "default": 1
+    },
+    "106": {
+        "name": "Polar bear power",
+        "values": {
+            "1": {
+                "name": "Random"
+            },
+            "2": {
+                "name": "Side A : When drawing cards, you may choose cards from your Penalty zone as well as from the River.",
+                "tmdisplay": ""
+            },
+            "3": {
+                "name": "Side B : Choose a card from your Penalty zone and place it in another player's Penalty zone.",
+                "tmdisplay": ""
+            }
+        },
+        "displaycondition": [
+            {
+                "type": "otheroption",
+                "id": 100,
+                "value": 1
+            }
+        ],
+        "default": 1
+    },
+    "107": {
+        "name": "Authorized undo",
+        "values": {
+            "1": {
+                "name": "Off",
+                "description" : "Forbids players to undo their turn before the drawing phase",
+                "tmdisplay": ""
+            },
+            "2": {
+                "name": "On",
+                "description" : "Allows players to undo their turn before the drawing phase : all the cards placed are took back in hand and the moved tokens are moved back to their previous position",
+                "tmdisplay": ""
+            }
+        },
+        "default": 2
+    }
+}

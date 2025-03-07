@@ -1,0 +1,2740 @@
+/**
+ *------
+ * BGA framework: Gregory Isabelli & Emmanuel Colin & BoardGameArena
+ * Arctic implementation : © Gilles Verriez <gilles.vginc@gmail.com>
+ *
+ * This code has been produced on the BGA studio platform for use on http://boardgamearena.com.
+ * See http://en.boardgamearena.com/#!doc/Studio for more information.
+ * -----
+ *
+ * arctic.css
+ *
+ * Arctic stylesheet
+ *
+ */
+
+/*
+    This is the CSS stylesheet of your game User Interface.
+    
+    Styles defined on this file will be applied to the HTML elements you define in your
+    HTML template (arctic_arctic.tpl), and to HTML elements you create dynamically
+    (in arctic.js).
+    
+    Usually, you are using CSS to:
+    
+    1°) define the overall layout of your game
+        (ex: place the board on the top left, place player's hand beside, place the deck on the right, ...).
+
+    2°) create your CSS-sprites:
+        All images of your games should be gathered into a small number of image files. Then, using
+        background-image and background-position CSS properties, you create HTML blocks that can 
+        display these images correctly (see example below).
+    
+    3°) ... anything else:
+        It is really easy to add and remove CSS classes dynamically from your Javascript with
+        dojo.addClass and dojo.removeClass. It is also easy to check if an element has a class
+        (dojo.hasClass) or to get all elements with a specific class (dojo.query). This is why,
+        very often, using CSS classes for the logic of your user interface allow you to do complex
+        thing easily.
+        
+        
+     Note: on the production platform, this file will be compressed and comments will be removed.
+           Consequently, don't hesitate to put as many comments as necessary.
+*/
+
+
+/* Note: you must not use any @import directive */
+
+
+/********* You can start writing your CSS below this line: **********/
+
+
+
+@font-face {
+    font-family: Cinzel-Black;
+    src: url(img/Cinzel-Black.ttf);
+}
+
+html {
+    background: url('img/background.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+}
+body {    
+    color: #1c8fb2;
+}
+html.arc_pref_cinzel_on body,
+html.arc_pref_cinzel_on .chatwindowlogstitlebar {
+    font-family: Cinzel-Black;
+}
+html.arc_pref_cinzel_off h3 {
+    font-family: Cinzel-Black;
+}
+#chatbar,
+html.arc_pref_cinzel_off .arc_message h3,
+.dijitTooltipContainer .newArchiveComment {
+    font-family: Roboto,Arial,sans-serif;
+}
+.dijitTooltipContainer .newArchiveComment {
+    color:#000;
+}
+.arc_power_bubble {
+    color: #1c8fb2 !important;
+    border: 1px #1c8fb2 solid !important;
+    z-index: 999;
+}
+#page-title, h3, h4, .bgabutton, .gamename, .player-name, span {
+    font-weight: 500 !important;
+}
+.arc_whiteblock {
+    background-image: none !important;
+    background-color: rgba(255,255,255,0.9) !important;
+}
+.player-board:not(#controls3d_wrap), #page-title {
+    background-color: rgba(255,255,255,0.9) !important;
+}
+#arc_my_stack_in_details_wrapper.arc_whiteblock,
+#arc_my_penalties_in_details_wrapper.arc_whiteblock {
+    background-color: rgba(255,255,255,1) !important;
+}
+#page-title {
+    width: auto;
+    margin-left: 15px;
+    margin-right: 10px;
+    border-radius: 8px;
+}
+.dijitTooltipContainer:not(.newArchiveComment), .log:not(.chatlog) {
+    color: #1c8fb2 !important;
+}
+/********* BEGIN game area blocks **********/
+.arc_whiteblock {
+    margin: 0 !important;
+}
+.arc_playerstack_wrap, .arc_playerpenalties_wrap {
+    top: 0 !important;
+    left: 0 !important;
+    position: relative !important;
+}
+.arc_playerstack_wrap .arc_cardontable {
+    display: table-caption !important;
+    position: absolute !important;
+}
+
+.spectatorMode #arc_myhand_wrap,
+.spectatorMode #arc_penaltiesandstack_wrap,
+.spectatorMode #arc_totem_wrap {
+    display: none !important;
+}
+#arc_spectatorInfo {
+    display: none;
+}
+.spectatorMode #arc_spectatorInfo {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+#arc_scoring_stack_wrapper_current_player {
+    grid-row: 2 / 3;
+}
+#arc_scoring_board_wrapper {
+    grid-row: 3 / 4;
+}
+#game_play_area.arc_finalSituation {
+    grid-template-columns: 94px 94px 94px 94px auto;
+    /*grid-template-rows: auto 275px 275px auto auto;*/
+}
+#game_play_area.arc_finalSituation #arc_totem {
+    margin-right: 60% !important;
+}
+
+#game_play_area.arc_finalSituation .arc_scoring_stack_wrapper {
+    grid-column: 1 / 10;
+}
+#game_play_area.arc_finalSituation #arc_scoring_stack_wrapper_current_player {
+    grid-row: 1;
+}
+.spectatorMode #game_play_area.arc_finalSituation #arc_scoring_stack_wrapper_current_player {
+    display: none !important;
+}
+#game_play_area.arc_finalSituation #arc_different_animal_types_wrap {
+    grid-row: 2;
+    grid-column: 1 / 7;
+}
+.spectatorMode #game_play_area.arc_finalSituation #arc_different_animal_types_wrap {
+    display: none !important;
+}
+#game_play_area.arc_finalSituation #arc_penaltiesandstack_wrap {
+    grid-row: 2;
+    grid-column: 7 / 10;
+    grid-template-columns: auto;
+}
+#game_play_area.arc_finalSituation #arc_totem_wrap {
+    grid-row: 3;
+    grid-column: 1 / 3;
+}
+#game_play_area.arc_finalSituation #arc_landscapes_wrap {
+    grid-row: 3;
+    grid-column: 3 / 10;
+}
+.spectatorMode #game_play_area.arc_finalSituation #arc_landscapes_wrap {
+    grid-column: 1 / 10 !important;
+    grid-row: 3;
+}
+#game_play_area.arc_finalSituation #arc_scoring_board_wrapper {
+    grid-row: 4 / 5;
+    grid-column: 1 / 10;
+}
+.spectatorMode #game_play_area.arc_finalSituation #arc_scoring_board_wrapper {
+    grid-row: 1 / 2 !important;
+}
+
+.arc_deck1{
+    background-image: url('img/cards1.jpg'); 
+}
+.arc_playerstack_wrap .arc_cardontable.arc_deck1.arc_minifiedcard {
+    background-image: url('img/minified_cards1.jpg') !important;
+}
+.arc_deck2{
+    background-image: url('img/cards2.jpg'); 
+}
+.arc_playerstack_wrap .arc_cardontable.arc_deck2.arc_minifiedcard {
+    background-image: url('img/minified_cards2.jpg') !important;
+}
+.arc_deck3{
+    background-image: url('img/cards3.jpg');
+}
+.arc_playerstack_wrap .arc_cardontable.arc_deck3.arc_minifiedcard {
+    background-image: url('img/minified_cards3.jpg') !important;
+}
+.arc_deck4{
+    background-image: url('img/cards4.jpg'); 
+}
+.arc_playerstack_wrap .arc_cardontable.arc_deck4.arc_minifiedcard {
+    background-image: url('img/minified_cards4.jpg') !important;
+}
+
+#arc_myScoreInfos table .arc_row th:not(.arc_picto_wrapper),
+#arc_myScoreInfos table .arc_row td:not(.arc_picto_wrapper) {
+	min-width: 300px;
+}
+#arc_myScoreInfos table .arc_row_2 th:not(.arc_picto_wrapper),
+#arc_myScoreInfos table .arc_row_2 td:not(.arc_picto_wrapper) {
+	min-width: 300px;
+}
+#arc_myScoreInfos table .arc_row_3 th:not(.arc_picto_wrapper),
+#arc_myScoreInfos table .arc_row_3 td:not(.arc_picto_wrapper) {
+	min-width: 200px;
+}
+#arc_myScoreInfos table .arc_row_4 th:not(.arc_picto_wrapper),
+#arc_myScoreInfos table .arc_row_4 td:not(.arc_picto_wrapper) {
+	min-width: 150px;
+}
+
+@media only screen and (max-width: 485px) {
+    /*1 player board per line */
+    .mobile_version .player-board {
+        /*width: calc(100% - 10px) !important;*/
+    }
+    .mobile_version #player_boards {
+        margin: 0 10px 0 10px !important;
+    }
+    
+    .mobile_version #arc_river .stockitem:hover,
+    .mobile_version #arc_myhand .stockitem:hover,
+    .mobile_version #arc_mystack .stockitem:hover, 
+    .mobile_version .arc_playertable .arc_card:hover,
+    .mobile_version #arc_mystackindetails .stockitem:hover,
+    .mobile_version #arc_mypenaltiesindetails .stockitem:hover,
+    .mobile_version #arc_currentPlayerPowers .stockitem:hover,
+    .mobile_version #arc_powers .stockitem:hover,
+    .mobile_version #arc_unavailablePowers .stockitem:hover {
+        scale: 1.5;
+        z-index: 900;
+        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.4);
+    }
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.top {
+        top : -25px !important;
+    }
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.bottom {
+        top : 25px !important;
+    }
+    
+    #arc_mypenalties_wrap h3 span,
+    #arc_mystack_wrap h3 span,
+    #arc_totem_wrap h3 span,
+    #arc_powers_wrap h3 span,
+    #arc_pick_wrap h3 span {
+        width: 78px;
+    }
+}
+
+@media only screen and (min-width: 486px) {
+    /*2 player board per line */
+    
+    .mobile_version .player-board {
+        /*width: calc(50% - 10px) !important;*/
+    }
+    .mobile_version #player_boards {
+        margin: 0 8px 0 8px !important;
+    }
+    .mobile_version .player-board.spectator-mode {
+        /*width: calc(100% - 10px) !important;*/
+    }
+
+    .mobile_version #arc_river .stockitem:hover,
+    .mobile_version #arc_myhand .stockitem:hover,
+    .mobile_version #arc_mystack .stockitem:hover, 
+    .mobile_version .arc_playertable .arc_card:hover,
+    .mobile_version #arc_mystackindetails .stockitem:hover,
+    .mobile_version #arc_mypenaltiesindetails .stockitem:hover,
+    .mobile_version #arc_currentPlayerPowers .stockitem:hover,
+    .mobile_version #arc_powers .stockitem:hover,
+    .mobile_version #arc_unavailablePowers .stockitem:hover {
+        scale: 1.5;
+        z-index: 900;
+        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.4);
+    }
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.top {
+        top : -25px !important;
+    }
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.bottom {
+        top : 25px !important;
+    }
+    
+    #arc_mypenalties_wrap h3 span,
+    #arc_mystack_wrap h3 span,
+    #arc_totem_wrap h3 span,
+    #arc_powers_wrap h3 span,
+    #arc_pick_wrap h3 span {
+        width: 78px;
+    }
+}
+
+/*@media only screen and (min-width: 740px) {*/
+    #page-title {
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+    h3 span,
+    .arc_player {
+        display: inline-block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        text-wrap: nowrap;
+    }
+    h3#arc_scoring_stack_title_current_player span {
+        text-wrap: wrap;
+    }
+    .arc_gridbox {
+        padding: 8px;
+        border-radius: 8px;
+    }
+    #game_play_area {
+        margin: 8px;
+        display: grid;
+        grid-gap: 4px;
+        grid-template-columns: 94px 94px auto;
+    }
+    .arc_message {
+        margin-top: 4px !important;
+    }
+    html.arc_pref_permanent_message_red #arc_permanent_message_wrap {
+        color: #FFF;
+        background-color: red !important;
+    }
+    html.arc_pref_permanent_message_red #arc_permanent_message_wrap .arc_close-btn {
+        color: #FFF;
+    }
+    .pageheader {
+        margin: 8px;
+    }
+
+    .arc_message_wrap {
+        grid-column: 1 / 5;
+        grid-row: 1;
+        display: grid;
+    }
+    .arc_message {
+        margin-top: 8px !important;
+    }
+    #arc_power_active_message_wrap {
+        grid-row: 2;
+    }
+    #arc_permanent_message_wrap {
+        grid-row: 1;
+    }
+    .arc_message_wrap h3 {
+        text-align: center;
+        width: 90%;
+    }
+    #arc_players_wrap {
+        grid-column: 3 / 5;
+        grid-row: 5;
+        display: grid;
+        grid-template-columns: auto auto auto;
+    }
+    #arc_players_wrap h3 {
+        grid-column: 1 / 3;
+        grid-row: 1;
+    }
+    .arc_player_wrap {
+        grid-row: 2;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    #arc_powers_wrap {
+        grid-column: 1;
+        grid-row: 2 / 4;
+    }
+    #arc_totem_wrap {
+        grid-column: 2;
+        grid-row: 2;
+    }
+    #arc_landscapes_wrap {
+        grid-column: 3 / 5;
+        grid-row: 2;
+    }
+    .spectatorMode #arc_landscapes_wrap {
+        grid-column: 2 / 5;
+    }
+    #arc_pick_wrap {
+        grid-column: 2;
+        grid-row: 3;
+    }
+    .arc_pick_item_count,
+    .arc_mypenalties_item_count {
+        color:#FFF;
+        margin: 10%;
+        display: block;
+    }
+    #arc_river_wrap {
+        grid-column: 3 / 5;
+        grid-row: 3;
+    }
+    #arc_penaltiesandstack_wrap {
+        grid-column: 1 / 2;
+        grid-row: 5;
+        display: grid;
+        grid-gap: 4px;
+        grid-template-columns:94px 94px;
+    }
+    #arc_mypenalties_wrap {
+        grid-column: 1;
+        min-height: 146px;
+    }
+    #arc_mypenalties .arc_placeholder {
+        background-size: 300%;
+        background-position-x: 78px;
+    }
+    #arc_mystack .arc_placeholder {
+        background-position-x: -78px;
+    }
+    #arc_mystack_wrap {
+        grid-column: 2;
+        min-height: 146px;
+    }
+    #arc_myhand_wrap {
+        grid-column: 1 / 5;
+        grid-row: 4;
+    }
+    .stockitem,
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.arc_nonScoring .stockitem::before,
+    .pageheader,
+    .arc_unavailable::before {
+        border-radius: 8px;
+    }
+    .arc_card, .arc_landscape {
+        display: inline-block;
+        position: relative;
+        /*margin-top: 5px;*/
+        width: 78px;
+        height: 109px;
+        border-radius: 8px;
+    }
+    .arc_landscape {
+        /*margin: 0 15px 0 15px;*/
+        background-image: url('img/landscapes.jpg');
+        /*background-size: ;*/
+        padding: 8px;
+        padding-right: 0;
+        width: 70px;
+        height: 93px !important;
+        background-size: 600%;
+        background-position-y: 0px;
+    }
+    #arc_landscape1 {
+        background-position-x: 0px;
+    }
+    #arc_landscape2 {
+        background-position-x: -78px;
+    }
+    #arc_landscape3 {
+        background-position-x: -156px;
+    }
+    #arc_landscape4 {
+        background-position-x: -234px;
+    }
+    #arc_landscape5 {
+        background-position-x: -312px;
+    }
+    #arc_landscape6 {
+        background-position-x: -390px;
+    }
+    #arc_mypenalties_wrap h3 span,
+    #arc_mystack_wrap h3 span,
+    #arc_totem_wrap h3 span,
+    #arc_powers_wrap h3 span,
+    #arc_players_wrap h3 span,
+    #arc_pick_wrap h3 span {
+        overflow: hidden;
+    }
+    #arc_totem {
+        display: block !important;
+        margin: auto !important;
+        width: 38px !important;
+        height: 57px !important;
+        border-radius: 8px !important;
+        -ms-transform: translateY(50%);
+        transform: translateY(50%);
+    }
+    .arc_minifiedcard {
+        display: inline-block;
+        position: relative;
+
+
+        width: 76px !important;
+        height: 106px !important;
+        scale: 50%;
+        top: -26px;
+        left: -19px;
+        /*
+        width: 38px !important;
+        height: 53px !important;
+        */
+        border-radius: 7px !important;
+    }
+    .arc_playerstack.arc_placeholder {
+        background-position-x: -76px;
+    }
+
+    /* old */
+    .arc_playerstack_wrap, .arc_playerpenalties_wrap {
+        display: inline-block;
+        width: 38px !important;
+        height: 53px !important;
+    }
+    
+    .arc_playerstack_wrap, .arc_playerpenalties_wrap {
+        display: inline-block;
+        width: 76px !important;
+        height: 106px !important;
+    }
+    .arc_playertable {
+        /*box-shadow: 0px 0px 6px 6px rgba(0,128,0,0.4);*/
+        border-radius: 8px;
+    }
+
+    .arc_turnedbackcardontable {
+        background-size: 232px 109px !important;
+    }
+    .arc_higlightedprimarytoken {
+        top: 26px !important;
+    }
+    .arc_arrowLeft {
+        left: -37px;
+    }
+    .arc_arrowRight {
+        left: 40px;
+    }
+    .arc_actionArrow {
+        top: 23px;
+        width: 22px;
+        height: 25px;
+        background-size: 100%;
+    }
+    .arc_secondarytokenwrap {
+        top : 88px;
+        left : 20px !important;
+    }
+    .arc_secondarytokenwrap .arc_actionArrow {
+        top: 8px;
+    }
+    .arc_cardontable {
+        position: relative;
+        top: -26px;
+        left: -19px;
+    }
+/*}*/
+
+@media only screen and (min-width: 768px) {
+
+    #arc_river .stockitem:hover,
+    #arc_myhand .stockitem:hover,
+    #arc_mystack .stockitem:hover, 
+    .arc_playertable .arc_card:hover,
+    #arc_mystackindetails .stockitem:hover,
+    #arc_mypenaltiesindetails .stockitem:hover,
+    #arc_currentPlayerPowers .stockitem:hover,
+    #arc_powers .stockitem:hover,
+    #arc_unavailablePowers .stockitem:hover {
+        scale: 1.1;
+        z-index: 900;
+        box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.4);
+    }
+
+    .arc_higlightedprimarytoken {
+        top: 26px !important;
+    }
+    .arc_arrowLeft {
+        left: -37px;
+    }
+    .arc_arrowRight {
+        left: 40px;
+    }
+    .arc_actionArrow {
+        top: 23px;
+        width: 22px;
+        height: 25px;
+        background-size: 100%;
+    }
+    .arc_secondarytokenwrap {
+        top : 88px;
+        left : 20px !important;
+    }
+    .arc_secondarytokenwrap .arc_actionArrow {
+        top: 8px;
+    }
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.top {
+        top : -25px !important;
+    }
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.bottom {
+        top : 25px !important;
+    }
+/*    .arc_landscape {
+        background-image: url('img/landscapes.jpg');
+        padding: 8px;
+        padding-right: 15px;
+        width: 63px;
+        height: 106px !important;
+        background-size: 600%;
+        background-position-y: 1px;
+    }
+    #arc_landscape1 {
+        background-position-x: 1px;
+    }
+    #arc_landscape2 {
+        background-position-x: -86px;
+    }
+    #arc_landscape3 {
+        background-position-x: -172px;
+    }
+    #arc_landscape4 {
+        background-position-x: -258px;
+    }
+    #arc_landscape5 {
+        background-position-x: -344px;
+    }
+    #arc_landscape6 {
+        background-position-x: -430px;
+    }*/
+    
+    #arc_mypenalties_wrap h3 span,
+    #arc_mystack_wrap h3 span,
+    #arc_totem_wrap h3 span,
+    #arc_powers_wrap h3 span,
+    #arc_pick_wrap h3 span {
+        width: 78px;
+    }
+}
+@media only screen and (min-width: 980px) {
+
+    .arc_higlightedprimarytoken {
+        top: 26px !important;
+    }
+    .arc_arrowLeft {
+        left: -37px;
+    }
+    .arc_arrowRight {
+        left: 40px;
+    }
+    .arc_actionArrow {
+        top: 23px;
+        width: 22px;
+        height: 25px;
+        background-size: 100%;
+    }
+    .arc_secondarytokenwrap {
+        top : 88px;
+        left : 20px !important;
+    }
+    .arc_secondarytokenwrap .arc_actionArrow {
+        top: 8px;
+    }
+    
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.top {
+        top : -25px !important;
+    }
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.bottom {
+        top : 25px !important;
+    }
+    /*.arc_landscape {
+        background-image: url('img/landscapes.jpg');
+        padding: 8px;
+        padding-right: 15px;
+        width: 57px;
+        height: 96px !important;
+        background-size: 600%;
+        background-position-y: 0px;
+    }
+    #arc_landscape1 {
+        background-position-x: 1px;
+    }
+    #arc_landscape2 {
+        background-position-x: -80px;
+    }
+    #arc_landscape3 {
+        background-position-x: -160px;
+    }
+    #arc_landscape4 {
+        background-position-x: -240px;
+    }
+    #arc_landscape5 {
+        background-position-x: -320px;
+    }
+    #arc_landscape6 {
+        background-position-x: -400px;
+    }*/
+}
+
+@media only screen and (min-width: 1024px) {
+
+    .arc_higlightedprimarytoken {
+        top: 26px !important;
+    }
+    .arc_arrowLeft {
+        left: -37px;
+    }
+    .arc_arrowRight {
+        left: 40px;
+    }
+    .arc_actionArrow {
+        top: 23px;
+        width: 22px;
+        height: 25px;
+        background-size: 100%;
+    }
+    .arc_secondarytokenwrap {
+        top: 101px;
+        left: 23px !important;
+    }
+    .arc_secondarytokenwrap .arc_actionArrow {
+        top: 8px;
+    }
+    
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.top {
+        top : -30px !important;
+    }
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.bottom {
+        top : 30px !important;
+    }
+}
+
+
+@media only screen and (max-width: 1151px) {
+
+    .arc_player_wrap .arc_player {
+        display: none !important;
+    }
+    
+    .arc_minifiedcard {
+        display: inline-block;
+        position: relative;
+        width: 76px !important;
+        height: 106px !important;
+        border-radius: 8px !important;
+        scale: 100%;
+        top: 0;
+        left: 0;
+    }
+    
+    #arc_players_wrap.arc_players_wrap2 {
+        grid-template-columns: 100% !important;
+    }
+    #arc_players_wrap.arc_players_wrap3 {
+        grid-template-columns: 50% 50% !important;
+    }
+    #arc_players_wrap.arc_players_wrap4 {
+        grid-template-columns: 33% 33% 33% !important;
+    }
+    .spectatorMode #arc_players_wrap.arc_players_wrap2 {
+        grid-template-columns: 50% 50% !important;
+    }
+    .spectatorMode #arc_players_wrap.arc_players_wrap3 {
+        grid-template-columns: 33% 33% 33% !important;
+    }
+    .spectatorMode #arc_players_wrap.arc_players_wrap4 {
+        grid-template-columns: 25% 25% 25% 25% !important;
+    }
+    .arc_player {
+        width: calc(100% - 12px) !important;
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+    }
+    #arc_players_wrap .arc_player {
+        overflow: hidden;
+    }
+    .spectatorMode #arc_players_wrap {
+        grid-column: 1 / 5;
+    }
+}
+
+@media only screen and (min-width: 1152px) {
+    
+
+    .arc_playertable {
+        box-shadow: unset !important;
+        border-radius: unset !important;
+    }
+
+    #arc_players_wrap h3 span,
+    #arc_players_wrap .arc_player {
+        overflow: hidden;
+    }
+    .arc_gridbox {
+        padding: 8px;
+        border-radius: 8px;
+    }
+    #game_play_area {
+        margin: 8px;
+        display: grid;
+        grid-gap: 4px;
+        grid-template-columns: 106px 106px 106px auto;
+    }
+    .arc_message {
+        margin-top: 4px !important;
+    }
+    .pageheader {
+        margin: 8px;
+    }
+    .stockitem,
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.arc_nonScoring .stockitem::before,
+    .pageheader,
+    .arc_unavailable::before {
+        border-radius: 8px;
+    }
+    .arc_card, .arc_landscape {
+        display: inline-block;
+        position: relative;
+        /*margin-top: 5px;*/
+        width: 78px;
+        height: 109px;
+        border-radius: 8px;
+    }
+    .arc_landscape {
+        /*margin: 0 15px 0 15px;*/
+        background-image: url('img/landscapes.jpg');
+        /*background-size: ;*/
+        padding: 8px;
+        padding-right: 0;
+        width: 70px;
+        height: 93px !important;
+        background-size: 600%;
+        background-position-y: 0px;
+    }
+    #arc_landscape1 {
+        background-position-x: 0px;
+    }
+    #arc_landscape2 {
+        background-position-x: -78px;
+    }
+    #arc_landscape3 {
+        background-position-x: -156px;
+    }
+    #arc_landscape4 {
+        background-position-x: -234px;
+    }
+    #arc_landscape5 {
+        background-position-x: -312px;
+    }
+    #arc_landscape6 {
+        background-position-x: -390px;
+    }
+    
+    .arc_message_wrap {
+        grid-column: 1 / 9;
+    }
+    
+    #arc_players_wrap {
+        grid-column: 1;
+        grid-row: 2 / 4;
+        /*display: block;*/
+        display: grid;
+        grid-template-columns: unset;
+    }
+    #arc_powers_wrap {
+        grid-column: 2;
+        grid-row: 2 / 4;
+    }
+    
+    #arc_players_wrap h3 {
+        grid-column: unset;
+        grid-row: unset;
+    }
+    .arc_player_wrap {
+        grid-row: unset;
+        display: block;
+        flex-wrap: unset;
+        justify-content: unset;
+    }
+    #arc_totem_wrap {
+        grid-column: 3;
+        grid-row: 2;
+    }
+    #arc_landscapes_wrap {
+        grid-column: 4 / 9;
+        grid-row: 2;
+    }
+    .spectatorMode #arc_landscapes_wrap {
+        grid-column: 3 / 9;
+    }
+    #arc_pick_wrap {
+        grid-column: 3;
+        grid-row: 3;
+    }
+    #arc_river_wrap {
+        grid-column: 4 / 9;
+        grid-row: 3;
+    }
+    #arc_penaltiesandstack_wrap {
+        grid-column: 1 / 2;
+        grid-row: 4;
+        display: grid;
+        grid-gap: 4px;
+        grid-template-columns: 106px 106px;
+    }
+    #arc_mypenalties_wrap {
+        grid-column: 1;
+        grid-row: 1;
+        min-height: unset;
+    }
+    #arc_mystack_wrap {
+        grid-column: 2;
+        grid-row: 1;
+        min-height: unset;
+    }
+    #arc_myhand_wrap {
+        grid-column: 3 / 9;
+        grid-row: 4;
+    }
+    #arc_totem {
+        display: block !important;
+        margin: auto !important;
+        width: 38px !important;
+        height: 57px !important;
+        border-radius: 8px !important;
+        -ms-transform: translateY(50%);
+        transform: translateY(50%);
+    }
+    .arc_minifiedcard {
+        display: inline-block;
+        position: relative;
+
+
+        width: 76px !important;
+        height: 106px !important;
+        scale: 50%;
+        top: -26px;
+        left: -19px;
+        /*
+        width: 38px !important;
+        height: 53px !important;
+        */
+        border-radius: 7px !important;
+    }
+    .arc_playerstack_wrap, .arc_playerpenalties_wrap {
+        display: inline-block;
+        width: 38px !important;
+        height: 53px !important;
+    }
+    .arc_turnedbackcardontable {
+        background-size: 232px 109px !important;
+    }
+    .arc_higlightedprimarytoken {
+        top: 26px !important;
+    }
+    .arc_arrowLeft {
+        left: -37px;
+    }
+    .arc_arrowRight {
+        left: 40px;
+    }
+    .arc_actionArrow {
+        top: 23px;
+        width: 22px;
+        height: 25px;
+        background-size: 100%;
+    }
+    .arc_secondarytokenwrap {
+        top : 88px;
+        left : 20px !important;
+    }
+    .arc_secondarytokenwrap .arc_actionArrow {
+        top: 8px;
+    }
+    
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.top {
+        top : -35px !important;
+    }
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.bottom {
+        top : 35px !important;
+    }
+    
+    #arc_mypenalties_wrap h3 span,
+    #arc_mystack_wrap h3 span,
+    #arc_totem_wrap h3 span,
+    #arc_players_wrap h3 span,
+    #arc_powers_wrap h3 span,
+    #arc_pick_wrap h3 span,
+    .arc_player {
+        width: 94px;
+    }
+}
+
+
+@media only screen and (min-width: 1280px) {
+    .arc_gridbox {
+        padding: 8px;
+        border-radius: 9px;
+    }
+    #game_play_area {
+        margin: 8px;
+        display: grid;
+        grid-gap: 6px;
+        grid-template-columns: 110px 110px 110px auto;
+    }
+    .arc_message {
+        margin-top: 6px !important;
+    }
+    .pageheader {
+        margin: 8px;
+    }
+    .stockitem,
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.arc_nonScoring .stockitem::before,
+    .pageheader,
+    .arc_unavailable::before {
+        border-radius: 9px;
+    }
+    .arc_card, .arc_landscape {
+        display: inline-block;
+        position: relative;
+        /*margin-top: 5px;*/
+        width: 94px;
+        height: 131px;
+        border-radius: 9px;
+    }
+    .arc_landscape {
+        /*margin: 0 15px 0 15px;*/
+        background-image: url('img/landscapes.jpg');
+        /*background-size: ;*/
+        padding: 10px;
+        padding-right: 0;
+        width: 84px; /* 78px + 8px padding */
+        height: 111px !important;
+        background-size: 600%;
+        background-position-y: 0px;
+    }
+    #arc_landscape1 {
+        background-position-x: 0px;
+    }
+    #arc_landscape2 {
+        background-position-x: -94px;
+    }
+    #arc_landscape3 {
+        background-position-x: -188px;
+    }
+    #arc_landscape4 {
+        background-position-x: -282px;
+    }
+    #arc_landscape5 {
+        background-position-x: -376px;
+    }
+    #arc_landscape6 {
+        background-position-x: -470px;
+    }
+    
+    #arc_players_wrap {
+        grid-column: 1;
+        grid-row: 2 / 4;
+        display: grid;
+    }
+    #arc_powers_wrap {
+        grid-column: 2;
+        grid-row: 2 / 4;
+    }
+    #arc_totem_wrap {
+        grid-column: 3;
+        grid-row: 2;
+    }
+    #arc_landscapes_wrap {
+        grid-column: 4 / 9;
+        grid-row: 2;
+    }
+    .spectatorMode #arc_landscapes_wrap {
+        grid-column: 3 / 9;
+    }
+    #arc_pick_wrap {
+        grid-column: 3;
+        grid-row: 3;
+    }
+    #arc_river_wrap {
+        grid-column: 4 / 9;
+        grid-row: 3;
+    }
+    #arc_penaltiesandstack_wrap {
+        grid-gap: 8px;
+        grid-template-columns: 110px 110px;
+    }
+    .pageheader {
+        margin: 8px;
+    }
+    #arc_mypenalties .arc_placeholder {
+        background-size: 300%;
+        background-position-x: 94px;
+    }
+    #arc_mystack .arc_placeholder {
+        background-position-x: -94px;
+    }
+    #arc_myhand_wrap {
+        grid-column: 3 / 9;
+        grid-row: 4;
+    }
+    #arc_totem {
+        display: block !important;
+        margin: auto !important;
+        width: 46px !important;
+        height: 68px !important;
+        border-radius: 9px !important;
+        -ms-transform: translateY(50%);
+        transform: translateY(50%);
+    }
+    .arc_minifiedcard {
+        display: inline-block;
+        position: relative;
+
+
+        width: 76px !important;
+        height: 106px !important;
+        scale: 59%;
+        top: -22px;
+        left: -16px;
+        /*
+        width: 45px !important;
+        height: 62px !important;
+        */
+
+
+        border-radius: 7px !important;
+    }
+    .arc_playerstack_wrap, .arc_playerpenalties_wrap {
+        display: inline-block;
+        width: 45px !important;
+        height: 62px !important;
+    }
+    .arc_turnedbackcardontable {
+        background-size: 277px 129px !important;
+    }
+    .arc_playerstack.arc_placeholder {
+        background-position-x: -76px;
+    }
+    .arc_higlightedprimarytoken {
+        top: 22px !important;
+    }
+    .arc_arrowLeft {
+        left: -47px;
+    }
+    .arc_arrowRight {
+        left: 47px;
+    }
+    .arc_actionArrow {
+        top: 23px;
+        width: 23px;
+        height: 26px;
+        background-size: 100%;
+    }
+    .arc_secondarytokenwrap {
+        top : 105px;
+    }
+    .arc_secondarytokenwrap .arc_actionArrow {
+        top: 11px;
+    }
+    
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.top {
+        top : -35px !important;
+    }
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.bottom {
+        top : 35px !important;
+    }
+    
+    #arc_mypenalties_wrap h3 span,
+    #arc_mystack_wrap h3 span,
+    #arc_totem_wrap h3 span,
+    #arc_players_wrap h3 span,
+    #arc_powers_wrap h3 span,
+    #arc_pick_wrap h3 span,
+    .arc_player {
+        width: 94px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .arc_gridbox {
+        padding: 8px;
+        border-radius: 10px;
+    }
+    #game_play_area {
+        margin: 8px;
+        display: grid;
+        grid-gap: 6px;
+        grid-template-columns: 125px 125px 125px auto;
+    }
+    .arc_message {
+        margin-top: 6px !important;
+    }
+    .pageheader {
+        margin: 8px;
+    }
+    .stockitem,
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.arc_nonScoring .stockitem::before,
+    .pageheader,
+    .arc_unavailable::before {
+        border-radius: 10px;
+    }
+    .arc_card, .arc_landscape {
+        display: inline-block;
+        position: relative;
+        /*margin-top: 5px;*/
+        width: 109px;
+        height: 153px;
+        border-radius: 10px;
+    }
+    .arc_landscape {
+        /*margin: 0 15px 0 15px;*/
+        background-image: url('img/landscapes.jpg');
+        /*background-size: ;*/
+        padding: 15px;
+        padding-right: 0;
+        width: 94px; /* 94px + 15px padding */
+        height: 123px !important; /* 123px + 15px*2 padding */
+        background-size: 600%;
+        background-position-y: 0px;
+    }
+    #arc_landscape1 {
+        background-position-x: 0px;
+    }
+    #arc_landscape2 {
+        background-position-x: -109px;
+    }
+    #arc_landscape3 {
+        background-position-x: -218px;
+    }
+    #arc_landscape4 {
+        background-position-x: -327px;
+    }
+    #arc_landscape5 {
+        background-position-x: -436px;
+    }
+    #arc_landscape6 {
+        background-position-x: -545px;
+    }
+    
+    #arc_players_wrap {
+        grid-column: 1;
+        grid-row: 2 / 4;
+        display: grid;
+    }
+    #arc_powers_wrap {
+        grid-column: 2;
+        grid-row: 2 / 4;
+    }
+    #arc_totem_wrap {
+        grid-column: 3;
+        grid-row: 2;
+    }
+    #arc_landscapes_wrap {
+        grid-column: 4 / 9;
+        grid-row: 2;
+    }
+    .spectatorMode #arc_landscapes_wrap {
+        grid-column: 3 / 9;
+    }
+    #arc_pick_wrap {
+        grid-column: 3;
+        grid-row: 3;
+    }
+    #arc_river_wrap {
+        grid-column: 4 / 9;
+        grid-row: 3;
+    }
+    #arc_penaltiesandstack_wrap {
+        grid-template-columns: 125px 125px;
+    }
+    #arc_myhand_wrap {
+        grid-column: 3 / 9;
+        grid-row: 4;
+    }
+    #arc_totem {
+        display: block !important;
+        margin: auto !important;
+        width: 63px !important;
+        height: 80px !important;
+        border-radius: 10px !important;
+        -ms-transform: translateY(50%);
+        transform: translateY(50%);
+    }
+    .arc_minifiedcard {
+        display: inline-block;
+        position: relative;
+
+
+        width: 76px !important;
+        height: 106px !important;
+        
+        scale: 62%;
+        top: -18px;
+        left: -12px;
+        /*
+        width: 52px !important;
+        height: 71px !important;
+        */
+
+
+        border-radius: 7px !important;
+    }
+    .arc_playerstack_wrap, .arc_playerpenalties_wrap {
+        display: inline-block;
+        width: 52px !important;
+        height: 71px !important;
+    }
+    #arc_mypenalties .arc_placeholder {
+        background-size: 300%;
+        background-position-x: 109px;
+    }
+    #arc_mystack .arc_placeholder {
+        background-position-x: -109px;
+    }
+    .arc_turnedbackcardontable {
+        background-size: 322px 152px !important;
+    }
+    .arc_playerstack.arc_placeholder {
+        background-position-x: -76px;
+    }
+    .arc_higlightedprimarytoken {
+        top: 23px !important;
+    }
+    .arc_arrowLeft {
+        left: -50px;
+    }
+    .arc_arrowRight {
+        left: 60px;
+    }
+    .arc_actionArrow {
+        top: 16px;
+        width: 23px;
+        height: 26px;
+        background-size: 100%;
+    }
+    .arc_secondarytokenwrap {
+        top : 120px;
+    }
+    .arc_secondarytokenwrap .arc_actionArrow {
+        top: 13px;
+    }
+    
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.top {
+        top : -40px !important;
+    }
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.bottom {
+        top : 40px !important;
+    }
+    #arc_myScoreInfos table .arc_row th:not(.arc_picto_wrapper),
+    #arc_myScoreInfos table .arc_row td:not(.arc_picto_wrapper) {
+        min-width: 400px;
+    }
+    #arc_myScoreInfos table .arc_row_2 th:not(.arc_picto_wrapper),
+    #arc_myScoreInfos table .arc_row_2 td:not(.arc_picto_wrapper) {
+        min-width: 400px;
+    }
+    #arc_myScoreInfos table .arc_row_3 th:not(.arc_picto_wrapper),
+    #arc_myScoreInfos table .arc_row_3 td:not(.arc_picto_wrapper) {
+        min-width: 250px;
+    }
+    #arc_myScoreInfos table .arc_row_4 th:not(.arc_picto_wrapper),
+    #arc_myScoreInfos table .arc_row_4 td:not(.arc_picto_wrapper) {
+        min-width: 200px;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    .arc_gridbox {
+        padding: 8px;
+        border-radius: 12px;
+    }
+    #game_play_area {
+        margin: 8px;
+        display: grid;
+        grid-gap: 6px;
+        grid-template-columns: 141px 141px 141px auto;
+    }
+    .arc_message {
+        margin-top: 6px !important;
+    }
+    .pageheader {
+        margin: 8px;
+    }
+    .stockitem,
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.arc_nonScoring .stockitem::before,
+    .pageheader,
+    .arc_unavailable::before {
+        border-radius: 12px;
+    }
+    .arc_card, .arc_landscape {
+        display: inline-block;
+        position: relative;
+        /*margin-top: 5px;*/
+        width: 125px;
+        height: 174px;
+        border-radius: 12px;
+    }
+    .arc_landscape {
+        /*margin: 0 15px 0 15px;*/
+        background-image: url('img/landscapes.jpg');
+        /*background-size: ;*/
+        padding: 20px;
+        padding-right: 0;
+        width: 105px; /* 105px + 20px padding */
+        height: 135px !important;
+        background-size: 600%;
+        background-position-y: 0px;
+    }
+    #arc_landscape1 {
+        background-position-x: 0px;
+    }
+    #arc_landscape2 {
+        background-position-x: -125px;
+    }
+    #arc_landscape3 {
+        background-position-x: -250px;
+    }
+    #arc_landscape4 {
+        background-position-x: -375px;
+    }
+    #arc_landscape5 {
+        background-position-x: -500px;
+    }
+    #arc_landscape6 {
+        background-position-x: -625px;
+    }
+
+    #arc_players_wrap {
+        grid-column: 1;
+        grid-row: 2 / 4;
+        display: grid;
+    }
+    #arc_powers_wrap {
+        grid-column: 2;
+        grid-row: 2 / 4;
+    }
+    #arc_totem_wrap {
+        grid-column: 3;
+        grid-row: 2;
+    }
+    #arc_landscapes_wrap {
+        grid-column: 4 / 9;
+        grid-row: 2;
+    }
+    .spectatorMode #arc_landscapes_wrap {
+        grid-column: 3 / 9;
+    }
+    #arc_pick_wrap {
+        grid-column: 3;
+        grid-row: 3;
+    }
+    #arc_river_wrap {
+        grid-column: 4 / 9;
+        grid-row: 3;
+    }
+    #arc_penaltiesandstack_wrap {
+        grid-template-columns: 141px 141px;
+    }
+    #arc_mypenalties .arc_placeholder {
+        background-size: 300%;
+        background-position-x: 78px;
+    }
+    #arc_mystack .arc_placeholder {
+        background-position-x: -125px;
+    }
+    #arc_myhand_wrap {
+        grid-column: 3 / 9;
+        grid-row: 4;
+    }
+
+    #arc_totem {
+        display: block !important;
+        margin: auto !important;
+        width: 61px !important;
+        height: 91px !important;
+        border-radius: 12px !important;
+        -ms-transform: translateY(50%);
+        transform: translateY(50%);
+    }
+    .arc_minifiedcard {
+        display: inline-block;
+        position: relative;
+        
+
+
+        width: 76px !important;
+        height: 106px !important;
+        scale: 80%;
+        top: 0;
+        left: -12px;
+        /*
+        width: 60px !important;
+        height: 82px !important;
+        */
+
+
+        border-radius: 7px !important;
+    }
+
+    .arc_cardontable {
+        position: relative;
+        top: 0;
+        left: -8px;
+    }
+
+    .arc_playerstack_wrap, .arc_playerpenalties_wrap {
+        display: inline-block;
+        width: 60px !important;
+        height: 82px !important;
+    }
+    #arc_mypenalties .arc_placeholder {
+        background-size: 300%;
+        background-position-x: 125px;
+    }
+    #arc_mystack .arc_placeholder {
+        background-position-x: -125px;
+    }
+    .arc_turnedbackcardontable {
+        background-size: 370px 174px !important;
+    }
+    .arc_playerstack.arc_placeholder {
+        background-position-x: -76px;
+    }
+    .arc_higlightedprimarytoken {
+        top: 15px !important;
+    }
+    .arc_arrowLeft {
+        left: -50px;
+    }
+    .arc_arrowRight {
+        left: 70px;
+    }
+    .arc_actionArrow {
+        top: 8px;
+        width: 25px;
+        height: 29px;
+        background-size: 100%;
+    }
+    .arc_secondarytokenwrap {
+        top : 135px;
+    }
+    .arc_secondarytokenwrap .arc_actionArrow {
+        top: 15px;
+    }
+    
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.top {
+        top : -45px !important;
+    }
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.bottom {
+        top : 45px !important;
+    }
+    #arc_mypenalties_wrap h3 span,
+    #arc_mystack_wrap h3 span,
+    #arc_totem_wrap h3 span,
+    #arc_players_wrap h3 span,
+    #arc_powers_wrap h3 span,
+    #arc_pick_wrap h3 span,
+    .arc_player {
+        width: 125px;
+    }
+}
+@media only screen and (min-width: 1920px) {
+    #game_play_area {
+        margin: 15px;
+        display: grid;
+        grid-gap: 15px;
+        grid-template-columns: 186px 186px 186px auto;
+    }
+    .arc_message {
+        margin-top: 15px !important;
+    }
+    /* 1920px + 15px margins = 1950px : if screen width is 1920px then 15px margins will apply */
+    @media only screen and (min-width: 1950px) {
+        #game_play_area {
+            margin: auto;
+            max-width: 1673px; /* area width when screen width is 1920px */
+        }
+    }
+
+    .arc_gridbox {
+        padding: 15px;
+        border-radius: 15px;
+    }
+    .pageheader {
+        margin: 15px;
+        margin-right: 8px;
+    }
+    .stockitem,
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.arc_nonScoring .stockitem::before,
+    .pageheader,
+    .arc_unavailable::before {
+        border-radius: 15px;
+    }
+    .arc_card, .arc_landscape {
+        display: inline-block;
+        position: relative;
+        /*margin-top: 5px;*/
+        width: 156px;
+        height: 218px;
+        border-radius: 15px;
+    }
+    .arc_landscape {
+        /*margin: 0 15px 0 15px;*/
+        background-image: url('img/landscapes.jpg');
+        padding: 30px;
+        padding-right: 0;
+        width: 126px; /* 126px + 30px padding */
+        height: 158px !important;
+    }
+    #arc_landscape1 {
+        background-position-x: 0;
+    }
+    #arc_landscape2 {
+        background-position-x: -156px;
+    }
+    #arc_landscape3 {
+        background-position-x: -312px;
+    }
+    #arc_landscape4 {
+        background-position-x: -468px;
+    }
+    #arc_landscape5 {
+        background-position-x: -624px;
+    }
+    #arc_landscape6 {
+        background-position-x: -780px;
+    }
+    #arc_totem {
+        display: block !important;
+        margin: auto !important;
+        width: 76px !important;
+        height: 114px !important;
+        border-radius: 15px !important;
+        -ms-transform: translateY(50%);
+        transform: translateY(50%);
+    }
+    .arc_minifiedcard {
+        display: inline-block;
+        position: relative;
+        width: 76px !important;
+        height: 106px !important;
+        border-radius: 8px !important;
+        scale: 100%;
+        top: 0;
+        left: 0;
+    }
+    #arc_penaltiesandstack_wrap {
+        grid-gap: 15px;
+        grid-template-columns: 186px 186px;
+    }
+    .arc_playerstack_wrap, .arc_playerpenalties_wrap {
+        display: inline-block;
+        width: 76px !important;
+        height: 106px !important;
+    }
+    #arc_mypenalties .arc_placeholder {
+        background-size: 300%;
+        background-position-x: 156px;
+    }
+    #arc_mystack .arc_placeholder {
+        background-position-x: -156px;
+    }
+    .arc_turnedbackcardontable {
+        background-size: unset !important;
+    }
+    .arc_playerpenalties.arc_placeholder {
+        background-position-x: 76px;
+    }
+    .arc_playerstack.arc_placeholder {
+        background-position-x: -76px;
+    }
+    .arc_higlightedprimarytoken {
+        top: 0px !important;
+    }
+    .arc_arrowLeft {
+        left: -76px;
+    }
+    .arc_arrowRight {
+        left: 85px;
+    }
+    .arc_actionArrow {
+        top: -22px;
+        width: 45px;
+        height: 49px;
+    }
+    .arc_secondarytokenwrap {
+        top: 158px;
+    }
+    .arc_secondarytokenwrap .arc_actionArrow {
+        top: 24px;
+    }
+
+    .arc_cardontable {
+        position: relative;
+        width: 156px;
+        height: 218px;
+    }
+    
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.top {
+        top : -50px !important;
+    }
+    .arc_scoring_stack_wrapper .arc_mystackinscoring.bottom {
+        top : 50px !important;
+    }
+    #arc_mypenalties_wrap h3 span,
+    #arc_mystack_wrap h3 span,
+    #arc_totem_wrap h3 span,
+    #arc_players_wrap h3 span,
+    #arc_powers_wrap h3 span,
+    #arc_pick_wrap h3 span,
+    .arc_player {
+        width: 156px;
+    }
+    
+    #arc_scoring_stack_wrapper_current_player {
+        grid-row: 2 / 3;
+    }
+    #arc_scoring_board_wrapper {
+        grid-row: 3 / 4;
+    }
+    #game_play_area.arc_finalSituation {
+        grid-template-columns: 186px 186px 186px 186px 186px 186px auto;
+        /*grid-template-rows: auto 275px 275px auto auto;*/
+    }
+    #game_play_area.arc_finalSituation #arc_totem {
+        margin-right: auto !important;
+    }
+    #game_play_area.arc_finalSituation .arc_scoring_stack_wrapper {
+        grid-column: 1 / 10;
+    }
+    #game_play_area.arc_finalSituation #arc_scoring_stack_wrapper_current_player {
+        grid-row: 1;
+    }
+    .spectatorMode #game_play_area.arc_finalSituation #arc_scoring_stack_wrapper_current_player {
+        display: none !important;
+    }
+    #game_play_area.arc_finalSituation #arc_different_animal_types_wrap {
+        grid-row: 2;
+        grid-column: 1 / 7;
+    }
+    .spectatorMode #game_play_area.arc_finalSituation #arc_different_animal_types_wrap {
+        display: none !important;
+    }
+    #game_play_area.arc_finalSituation #arc_penaltiesandstack_wrap {
+        grid-row: 2;
+        grid-column: 7 / 10;
+        grid-template-columns: auto;
+    }
+    #game_play_area.arc_finalSituation #arc_totem_wrap {
+        grid-row: 3;
+        grid-column: 1 / 4 !important;
+    }
+    #game_play_area.arc_finalSituation #arc_landscapes_wrap {
+        grid-row: 3;
+        grid-column: 4 / 10 !important;
+    }
+    .spectatorMode #game_play_area.arc_finalSituation #arc_landscapes_wrap {
+        grid-column: 1 / 10 !important;
+        grid-row: 3;
+    }
+    #game_play_area.arc_finalSituation #arc_scoring_board_wrapper {
+        grid-row: 4 / 5;
+        grid-column: 1 / 10;
+    }
+    .spectatorMode #game_play_area.arc_finalSituation #arc_scoring_board_wrapper {
+        grid-row: 1 / 2 !important;
+    }
+}
+/********* END game area blocks **********/
+
+.arc_playerpenalties.arc_placeholder {
+    background-position-x: 76px;
+}
+.arc_primarytokenwrap {
+    position: relative;
+      top: -51px;
+      left: 22px;
+}
+.arc_higlightedprimarytoken {
+    left: 0px !important;
+    transform: scale(1.1);
+}
+.arc_secondarytokenwrap {
+    position: relative;
+    left: 25px;
+}
+.arc_higlightedsecondarytoken {
+    top: 0px !important;
+    left: 0px !important;
+    transform: scale(0.9);
+}
+.arc_actionArrow {
+    position: absolute;
+    background-image: url("img/arrows.png");
+    opacity: 1;
+    display: none;
+    background-size: 100%;
+}
+.arc_arrowLeft {
+    background-position: 0% -100%;
+}
+.arc_arrowRight {
+    background-position: 0% 0%;
+}
+.arc_actionArrow.active {
+    display: block;
+}
+.arc_secondarytokenwrap .arc_actionArrow {
+    transform: scaleY(-1);
+}
+.arc_primarytokenwrap .arc_actionArrow.arc_slightlyHidden {
+    opacity: 0.3 !important;
+}
+.arc_secondarytokenwrap .arc_actionArrow:state(initialized) {
+    display: none !important;
+}
+
+/********* BEGIN players area block **********/
+.arc_fpicon {
+    background-image: url("img/first.png");
+    width: 50px;
+    height: 50px;
+    background-size: 100%;
+}
+/*.arc_player_wrap {
+    width: 100%;
+}*/
+.arc_player {
+    /*height: 73px;
+    text-align: center;
+    line-height: 73px;*/
+    text-align: center;
+    margin-bottom: 5px;
+}
+.arc_playertable {
+    margin-bottom: 15px;
+    display: inline-flex;
+}
+.arc_playerstack_wrap {
+    margin-left: 4px;
+}
+/********* END players area block **********/
+
+.arc_placeholder {
+    
+    background-image: url('img/back.jpg');
+    background-size: 300%;
+    /*background-image: none !important;
+    background-color: #4cb7ca;*/
+    filter: alpha(opacity=30);
+    /* IE */
+    -moz-opacity: 0.3;
+    /* Mozilla */
+    opacity: 0.3;
+}
+.arc_playerpenalties {
+    /*background-image: url('img/back.jpg');
+    background-size: 100%;*/
+}
+.arc_playerstack {
+    /*background-image: url('img/cards1.jpg');
+    background-size: 500%;*/
+}
+#arc_mystack .stockitem_selected,
+#arc_mypenalties .stockitem_selected,
+#arc_pick .stockitem_selected {
+    border: 0 !important;
+}
+html.arc_pref_animations_on #arc_landscape .stockitem.arc_pulse,
+html.arc_pref_animations_on #arc_totem_wrap.arc_active_slot #arc_totem .stockitem,
+html.arc_pref_animations_on .arc_player_wrap.arc_pulse .arc_player,
+html.arc_pref_animations_on span.arc_pulse {
+    animation: arc_pulseScaleUp 2s infinite;
+}
+html.arc_pref_animations_on .arc_message h3.arc_pulse,
+html.arc_pref_animations_on #pagemaintitletext .arc_pulse {
+    animation: arc_pulseScaleUpSmall 2s infinite;
+}
+.arc_message h3.arc_pulse:hover,
+#pagemaintitletext .arc_pulse:hover,
+span.arc_pulse:hover {
+    animation: unset !important;
+    transform: scale(102%);
+}
+#game_play_area.arc_finalSituation #arc_totem_wrap.arc_active_slot #arc_totem .stockitem  {
+    animation: unset !important;
+}
+html.arc_pref_animations_on #arc_powers_wrap .stockitem.arc_pulse {
+    animation: arc_pulseScaleDown 2s infinite;
+}
+html.arc_pref_animations_on .log .arc_pulse {
+    animation: arc_pulseScaleDownSmall 2s infinite;
+}
+#arc_powers_wrap:hover .stockitem.arc_pulse {
+    animation: unset !important;
+}
+html.arc_pref_animations_on #pagemaintitletext .arc_picto_wrapper:not(.arc_inactive) {
+    animation: arc_pulseFade 2s infinite;
+}
+html.arc_pref_animations_on .arc_player_wrap.arc_pulse .arc_playertable {
+    animation: arc_pulsePlayerBoxShadow 2s infinite;
+}
+html.arc_pref_animations_on #pagemaintitletext .arc_picto_wrapper:not(.arc_inactive):hover {
+    animation: unset !important;
+}
+/*
+#arc_powers_wrap .stockitem.arc_pulse:not(:hover) {
+    animation: unset !important;
+    transform: scale(100%);
+}
+*/
+.log .arc_pulse:hover {
+    animation: unset !important;
+}
+.arc_token {
+    background-image: url('img/animal_tokens.png');
+    width: 45px;
+    height: 49px;
+    margin: 6px;
+    background-size: 600%;
+    float: left;
+}
+  
+@keyframes arc_pulseOpacity {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.2;
+    }
+}
+@keyframes arc_pulseScaleUp {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+@keyframes arc_pulseScaleUpSmall {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(102%);
+    }
+}
+@keyframes arc_pulseScaleDown {
+    0%, 100% {
+        transform: scale(0.95);
+    }
+    50% {
+        transform: scale(1);
+    }
+}
+@keyframes arc_pulseScaleDownSmall {
+    0%, 100% {
+        transform: scale(98%);
+    }
+    50% {
+        transform: scale(1);
+    }
+}
+@keyframes arc_pulseBoxShadow {
+    0%, 100% {
+        box-shadow: 0px 0px 12px 4px rgba(28,143,178,1);
+    }
+    50% {
+        box-shadow: none;
+        /*box-shadow: 0px 0px 10px 4px rgba(0,0,0,1);*/
+    }
+}
+@keyframes arc_pulsePlayerBoxShadow {
+    0%, 100% {
+    }
+    50% {
+        box-shadow: none;
+        /*box-shadow: 0px 0px 10px 4px rgba(0,0,0,1);*/
+    }
+}
+@keyframes arc_pulseFade {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+
+/*
+.tile {
+    display: inline-block;
+    position: relative;
+    margin-top: 5px;
+    width: 58px;
+    height: 87px;
+    border-radius: 5px;
+}
+.horizontalTile {
+    width: 157px;
+    height: 78px;
+    border-radius: 15px;
+    margin-top: 7px !important;
+}
+*/
+
+.arc_playerpenalties_wrap .arc_minifiedcard.arc_turnedbackcardontable {
+    background-size: 300% !important;
+}
+
+#arc_river .stockitem, 
+#arc_totem .stockitem, 
+#arc_myhand .stockitem,
+#arc_mystack .stockitem,
+#arc_mypenalties .stockitem,
+#arc_currentPlayerPowers .stockitem,
+#arc_powers .stockitem,
+#arc_unavailablePowers .stockitem,
+#arc_pick .arc_card, 
+#arc_pick .stockitem,
+.arc_landscape,
+.arc_mystackinscoring .stockitem,
+#arc_different_animal_types .stockitem {
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.4);
+}
+.arc_playertable .arc_card {
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.2);
+}
+
+.arc_unavailable::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(255,255,255,0.6);
+}
+.arc_unavailable:hover::before {
+    display: none !important;
+}
+/*
+.arc_unavailable {
+    filter: alpha(opacity=30) !important;
+    -moz-opacity: 0.3 !important;
+    opacity: 0.3 !important;
+}
+*/
+#arc_currentPlayerPowers:empty, #arc_powers:empty, #arc_unavailablePowers:empty {
+    height: 0 !important;
+}
+
+html.arc_pref_animations_on .arc_active_slot {
+    opacity: 1 !important;
+    -moz-opacity: 1 !important;
+    
+    animation: arc_pulseBoxShadow 2s infinite;
+}
+html.arc_pref_animations_off .arc_active_slot {
+    opacity: 1 !important;
+    -moz-opacity: 1 !important;
+    box-shadow: 0px 0px 12px 4px rgba(28,143,178,1);
+}
+
+#arc_players_wrap:not(.arc_active_slot),
+#arc_totem_wrap:not(.arc_active_slot),
+#arc_landscapes_wrap:not(.arc_active_slot),
+#arc_powers_wrap:not(.arc_active_slot),
+#arc_pick_wrap:not(.arc_active_slot),
+#arc_river_wrap:not(.arc_active_slot),
+#arc_mypenalties_wrap:not(.arc_active_slot),
+#arc_mystack_wrap:not(.arc_active_slot),
+#arc_myhand_wrap:not(.arc_active_slot) {
+    opacity: 1 !important;
+    -moz-opacity: 1 !important;
+    animation: unset !important;
+    /* old mode :
+    opacity: 0.7;
+    -moz-opacity: 0.7;*/
+}
+
+#arc_my_stack_in_details_wrapper h3,
+#arc_my_penalties_in_details_wrapper h3 {
+    float: left;
+}
+#arc_mystackindetails,
+#arc_mypenaltiesindetails,
+.arc_mystackinscoring {
+    display: none;
+}
+.arc_myStackSeries {
+    display: grid;
+}
+#arc_my_stack_in_details_wrapper #arc_mystackindetails,
+#arc_my_penalties_in_details_wrapper #arc_mypenaltiesindetails {
+    clear: both;
+    display: block;
+    position: relative;
+}
+#arc_scoring_board_wrapper h3,
+.arc_scoring_stack_wrapper h3 {
+    grid-row: 1;
+}
+.arc_scoring_stack_wrapper .arc_mystackinscoring {
+    display: inline-grid;
+    position: relative;
+    grid-row: 2;
+    margin-top : 50px;
+    margin-bottom : 50px;
+}
+.arc_scoring_stack_wrapper #arc_myStackInfos {
+    grid-row: 3;
+}
+.arc_scoring_stack_wrapper .arc_mystackinscoring.arc_nonScoring .stockitem::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(255,255,255,0.7);
+}
+
+.arc_scoring_stack_wrapper .arc_turnedbackcardontable {
+    background-size: 300%  !important;
+}
+.arc_scoring_stack_wrapper,
+#arc_scoring_board_wrapper {
+    display: inline-grid;
+    grid-column: 1 / 9;
+    min-height: calc(50% - 15px);
+}
+#arc_my_stack_in_details_wrapper,
+#arc_my_penalties_in_details_wrapper {
+    position: absolute;
+    width: calc(100% - 85px);
+    margin: 15px !important;
+}
+#arc_my_stack_in_details_wrapper,
+#arc_my_penalties_in_details_wrapper,
+#arc_scoring_board_wrapper,
+.arc_scoring_stack_wrapper {
+    top: 15px;
+    left: 15px;
+    background-color: #FFF;
+    z-index: 10;
+}
+.arc_mystackinscoring.bottom .stockitem .arc_actionArrow.arc_arrowRight,
+.arc_mystackinscoring.bottom .stockitem .arc_actionArrow.arc_arrowLeft {
+    transform: scaleY(-1);
+    top: 10px !important;
+}
+.stockitem .arc_actionArrow.arc_arrowRight {
+    display: block;
+    right: -30px !important;
+    left: unset !important;
+}
+.arc_mystackinscoring.top .stockitem .arc_actionArrow.arc_arrowLeft,
+.arc_mystackinscoring.top .stockitem .arc_actionArrow.arc_arrowRight {
+    bottom: 10px !important;
+    top: unset !important;
+}
+.stockitem .arc_actionArrow.arc_arrowLeft {
+    display: block;
+    left: -30px !important;
+}
+.arc_mystackinscoring h3 {
+    grid-row: unset !important;
+    width: 100%;
+    position: absolute;
+    left: 5px;
+}
+.arc_mystackinscoring.bottom h3 {
+    top: -30px;
+}
+.arc_mystackinscoring.top h3 {
+    bottom: -35px;
+}
+
+@media only screen and (min-width: 1920px) {
+    .stockitem .arc_actionArrow.arc_arrowRight {
+        right: -55px !important;
+    }
+    .stockitem .arc_actionArrow.arc_arrowLeft {
+        left: -55px !important;
+    }
+}
+#arc_myScoreInfos {
+    /*display: grid;
+    grid-template-columns: auto auto auto;*/
+    overflow-x: auto;
+    margin: auto;
+}
+#arc_myScoreInfos table {
+    text-align: center;
+}
+
+
+#arc_myScoreInfos table tr {
+    border-bottom: 1px solid #1c8fb2;
+}
+/*
+#arc_myScoreInfos .arc_row {
+    grid-column: 2;
+    grid-template-columns: 50px auto;
+    width: 100%;
+    border-bottom: 1px solid #1c8fb2;
+}
+#arc_myScoreInfos .arc_row_2 {
+    grid-column: 2;
+    grid-template-columns: 50px auto auto;
+    border-bottom: 1px solid #1c8fb2;
+}
+#arc_myScoreInfos .arc_row_3 {
+    grid-column: 2;
+    grid-template-columns: 50px auto auto auto;
+    border-bottom: 1px solid #1c8fb2;
+}
+#arc_myScoreInfos .arc_row_4 {
+    grid-column: 2;
+    grid-template-columns: 50px auto auto auto auto;
+    border-bottom: 1px solid #1c8fb2;
+}
+    */
+#arc_myScoreInfos .arc_row div:not(:first-child),
+#arc_myScoreInfos .arc_row_2 div:not(:first-child),
+#arc_myScoreInfos .arc_row_3 div:not(:first-child),
+#arc_myScoreInfos .arc_row_4 div:not(:first-child) {
+    text-align: center;
+    line-height: 50px;
+}
+.arc_close-btn {
+    font-size: 40px;
+    font-weight: bold;
+    color: #1c8fb2;
+    cursor: pointer;
+    float: right;
+    line-height: 20px;
+}
+
+.stockitem.arc_showCardBehind {
+    transition-duration: 1s;
+    transform: translate(50px, 50px);
+}
+.stockitem.arc_hideCardBehind {
+    transition-duration: 1s;
+    transform: none;
+}
+.arc_turnedbackcardontable {
+    position: absolute;
+    width: 156px;
+    height: 218px;
+    background-position: 0 0 !important;
+    background-image: url('img/back.jpg') !important;
+}
+.arc_playerstack_wrap .arc_cardontable.arc_minifiedcard.arc_turnedbackcardontable {
+    background-position-y: 0 !important;
+    background-position-x: 0 !important;
+    background-size: 300% !important;
+    background-image: url('img/back.jpg') !important;
+}
+
+.arc_minified_animals {
+    background-image: url('img/minified_animals.png') !important;
+    background-position-x: 0px;
+    display: inline-block;
+    width: 14px;
+    height: 21px;
+    background-size: 100%;
+    top: 5px;
+    position: relative;
+}
+
+.arc_minified_animals.arc_fox {
+    background-position-y: 0px;
+    background-image: url('img/minified_fox.png') !important;
+    background-position-y: 0px;
+}
+.arc_minified_animals.arc_moose {
+    background-position-y: -21px;
+    background-image: url('img/minified_moose.png') !important;
+    background-position-y: 0px;
+}
+.arc_minified_animals.arc_walrus {
+    background-position-y: -42px;
+    background-image: url('img/minified_walrus.png') !important;
+    background-position-y: 0px;
+}
+.arc_minified_animals.arc_orca {
+    background-position-y: -63px;
+    background-image: url('img/minified_orca.png') !important;
+    background-position-y: 0px;
+}
+.arc_minified_animals.arc_puffin {
+    background-position-y: -84px;
+    background-image: url('img/minified_puffin.png') !important;
+    background-position-y: 0px;
+}
+.arc_minified_animals.arc_bear {
+    background-position-y: -105px;
+    background-image: url('img/minified_bear.png') !important;
+    background-position-y: 0px;
+}
+.arc_minified_animals.arc_generic {
+    background-position-y: -126px;
+    background-image: url('img/minified_pawn.png') !important;
+    background-position-y: 0px;
+}
+
+.arc_picto_wrapper {
+    /*width: 50px;*/
+    height: 50px;
+}
+.arc_picto {
+    background-image: url('img/pictograms.svg') !important;
+    width: 50px;
+    height: 50px;
+    background-position-y: 0px;
+    background-size: unset !important;
+    position: relative;
+}
+.arc_picto.arc_stack {
+    background-position-x: 0px;
+}
+.arc_picto.arc_token {
+    background-position-x: -50px;
+}
+.arc_picto.arc_pick {
+    background-position-x: -100px;
+}
+.arc_picto.arc_pickPlusOrMinusOne {
+    background-position-x: -150px;
+}
+.arc_picto.arc_stackPlusOrMinusOne {
+    background-position-x: -200px;
+}
+.arc_picto.arc_flippedCard {
+    background-position-x: -250px;
+}
+.arc_picto.arc_underStack {
+    background-position-x: -300px;
+}
+.arc_picto.arc_pickFromDeck {
+    background-position-x: -350px;
+}
+.arc_picto.arc_alwaysCompleteRiver {
+    background-position-x: -400px;
+}
+.arc_picto.arc_firstTokenMoveAgain {
+    background-position-x: -450px;
+}
+.arc_picto.arc_secondTokenMoveAgain {
+    background-position-x: -500px;
+}
+.arc_picto.arc_changeCardFromRiver {
+    background-position-x: -550px;
+}
+.arc_picto.arc_getBackCardFromStack {
+    background-position-x: -600px;
+}
+.arc_picto.arc_givePenalty {
+    background-position-x: -650px;
+}
+.arc_picto.arc_pickFromPenalties {
+    background-position-x: -700px;
+}
+.arc_picto.arc_moose {
+    background-position-x: -750px;
+}
+.arc_picto.arc_fox {
+    background-position-x: -800px;
+}
+.arc_picto.arc_orca {
+    background-position-x: -850px;
+}
+.arc_picto.arc_walrus {
+    background-position-x: -900px;
+}
+.arc_picto.arc_puffin {
+    background-position-x: -950px;
+}
+.arc_picto.arc_bear {
+    background-position-x: -1000px;
+}
+.arc_picto.arc_card {
+    background-position-x: -1050px;
+}
+.arc_picto.arc_token.arc_big {
+    background-position-x: -1100px;
+}
+.arc_picto.arc_pawn {
+    background-position-x: -1150px;
+}
+.arc_picto.arc_sum {
+    background-position-x: -1200px;
+}
+.arc_picto.arc_differentsAnimals {
+    background-position-x: -1250px;
+}
+.arc_picto.arc_discard {
+    background-position-x: -1300px;
+}
+.arc_picto.arc_player {
+    background-position-x: -1350px;
+}
+.arc_picto.arc_arrow.arc_top {
+    background-position-x: -1400px;
+}
+.arc_picto.arc_arrow.arc_bottom {
+    background-position-x: -1450px;
+}
+.arc_picto.arc_arrow.arc_left {
+    background-position-x: -1500px;
+}
+.arc_picto.arc_arrow.arc_right {
+    background-position-x: -1550px;
+}
+/**
+Improve to do : add trigram "arc_" in front of animals class name
+*/
+.arc_picto.arc_token.moose {
+    background-position-x: -1600px;
+}
+.arc_picto.arc_token.fox {
+    background-position-x: -1650px;
+}
+.arc_picto.arc_token.orca {
+    background-position-x: -1700px;
+}
+.arc_picto.arc_token.walrus {
+    background-position-x: -1750px;
+}
+.arc_picto.arc_token.puffin {
+    background-position-x: -1800px;
+}
+.arc_picto.arc_token.bear {
+    background-position-x: -1850px;
+}
+
+#pagemaintitletext .arc_picto_wrapper,
+.dijitTooltip .arc_picto_wrapper {
+    display: inline-flex;
+    height: 25px;
+    top: 7px;
+    position: relative;
+}
+.arc_picto_wrapper.arc_inactive {
+    opacity: 0.2;
+}
+#pagemaintitletext .arc_picto,
+.dijitTooltip .arc_picto {
+    background-image: url('img/pictograms.png') !important;
+    width: 25px;
+    height: 25px;
+    background-position-y: 0px;
+    background-size: 3800% !important;
+    position: relative;
+    margin: 0 !important;
+}
+.dijitTooltip .arc_card_def .arc_picto {
+    width: 50px;
+    height: 50px;
+}
+#pagemaintitletext .arc_picto.arc_stack,
+.dijitTooltip .arc_picto.arc_stack  {
+    background-position-x: 0px !important;
+}
+#pagemaintitletext .arc_picto.arc_token,
+.dijitTooltip .arc_picto.arc_token  {
+    background-position-x: -25px !important;
+}
+#pagemaintitletext .arc_picto.arc_pick,
+.dijitTooltip .arc_picto.arc_pick  {
+    background-position-x: -50px !important;
+}
+
+.dijitTooltip .arc_card_def .arc_picto.arc_stack {
+    background-position-x: -10px !important;
+}
+.dijitTooltip .arc_card_def .arc_picto.arc_pick {
+    background-position-x: -110px !important;
+}
+.dijitTooltip .arc_card_def .arc_picto.arc_token.moose {
+    background-position-x: 300px !important;
+}
+.dijitTooltip .arc_card_def .arc_picto.arc_token.fox {
+    background-position-x: 250px !important;
+}
+.dijitTooltip .arc_card_def .arc_picto.arc_token.orca {
+    background-position-x: 200px !important;
+}
+.dijitTooltip .arc_card_def .arc_picto.arc_token.walrus  {
+    background-position-x: 150px !important;
+}
+.dijitTooltip .arc_card_def .arc_picto.arc_token.puffin {
+    background-position-x: 100px !important;
+}
+.dijitTooltip .arc_card_def .arc_picto.arc_token.bear {
+    background-position-x: 50px !important;
+}
+
+
+#arc_myScoreInfos span.arc_picto.arc_token {
+    float: none !important;
+    display: inline-block !important;
+    /*top: 16px;*/
+    margin: 0;
+    width: 44px !important;
+    height: 44px !important;
+}
+#arc_myScoreInfos .arc_picto.arc_pawn {
+    /*top: 10px;*/
+}
+
+#arc_myScoreInfos table {
+	text-align: center;
+}
+#arc_myScoreInfos table th {
+	text-align: center;
+}
+#arc_myScoreInfos table .arc_totemTableScore {
+	display: inline-block;
+    position: relative;
+    top: -12px;
+}
+
+
+.pageheader {
+    background-color: rgba(255,255,255,0.9) !important;
+}
+/*
+.arc_mystackinscoring.arc_nonScoring.arc_xsCards .stockitem::before,
+.arc_mystackinscoring.arc_xsCards .stockitem,
+.player_board_content .stockitem.arc_xsCards {
+    border-radius: 4px !important;
+}
+.arc_mystackinscoring.arc_nonScoring.arc_sCards .stockitem::before,
+.arc_mystackinscoring.arc_sCards .stockitem,
+.player_board_content .stockitem.arc_sCards  {
+    border-radius: 6px !important;
+}
+.arc_mystackinscoring.arc_nonScoring.arc_mCards .stockitem::before,
+.arc_mystackinscoring.arc_mCards .stockitem,
+.player_board_content .stockitem.arc_mCards  {
+    border-radius: 8px !important;
+}
+.arc_mystackinscoring.arc_nonScoring.arc_lCards .stockitem::before,
+.arc_mystackinscoring.arc_lCards .stockitem,
+.player_board_content .stockitem.arc_lCards  {
+    border-radius: 15px !important;
+}
+*/
+.arc_mystackinscoring.arc_nonScoring .stockitem::before,
+.arc_mystackinscoring .stockitem,
+.player_board_content .stockitem  {
+    border-radius: 8% !important;
+}
+.arc_tooltipContent {
+    display:grid;
+    grid-template-rows : 50px auto;
+    max-width: 470px;
+    margin: 15px;
+}
+.arc_tooltipContent .arc_picto_wrapper {
+    grid-column: 1;
+}
+.arc_tooltipContent .arc_explain_wrapper {
+    grid-column: 2;
+    line-height: 50px;
+}
+.arc_tooltipContent .arc_picto_wrapper {
+    width: 50px;
+    height: 50px;
+}
+
+.arc_tooltipHeader {
+    margin: 15px;
+}
+.head_warning {
+    background-color: #e6c66e;
+ }
+ .head_infomsg {
+    color:#000;
+ }
+ .arc_red_text {
+    color : red;
+ }
+ .arc_shadowed_text {
+    text-shadow: #FFF 1px 0px 4px;
+ }
+
+ .arc_fpicon {
+    float: right;
+    margin-right: 5px;
+ }
+ .arc_cp_board_hand {
+    max-width: calc(100% - 90px);
+    margin-top: 7px;
+    margin-bottom: 7px;
+    margin-left: 35px;
+ }
+ .arc_cp_board_hand .stockitem {
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.4);
+ }
+ .arc_cp_board_handCardsCount {
+    margin: 7px;
+    float: left;
+    position: relative;
+    line-height: 34px;
+ }
+ /*
+ */
+ 
+.arc_hidden {
+    display: none !important;
+}
+span.arc_penaltiesScore,
+span.arc_differentAnimalTypesScore,
+span.arc_totemScore {
+    float: right;
+    font-size: 30px;
+    text-align: center;
+    height: 100%;
+    position: relative;
+}
+span.arc_penaltiesScore,
+span.arc_differentAnimalTypesScore {
+    top: 35%;
+}
+span.arc_totemScore {
+    top: -10%;
+}
+/* {
+    float: right;
+    font-size: 30px;
+    position: relative;
+    top: -20px;
+}*/
+.arc_scoringSum {
+    font-size: 24px;
+}
+.arc_different_animal_types .stockitem {
+    background-size: 100%;
+}
+#game_play_area.arc_finalSituation #arc_mypenalties_wrap h3 span {
+    width: unset !important;
+}
+
+/*
+#page-title .action-button {
+    display: block;
+  }
+*/
+
+#arc_power_active_message_wrap {
+    background-color: rgba(255,255,255,1) !important;
+}
+#button_undo {
+    float: right;
+    background-color: red;
+    background-image: none;
+}
+
+.arc_landscape_tooltip_zone {
+    position: absolute;
+    top: 6%;
+    right: 6%;
+    width: 20%;
+    height: 17%;
+    cursor: help;
+    z-index: 1;
+}
+#arc_landscape5_tooltip_zone,
+#arc_landscape6_tooltip_zone {
+    width: 30%;
+}
+.arc_tokenwrap .stockitem {
+    z-index: 2;
+    cursor: help !important;
+}
+
+.arc_cp_board_pileCardsCount, .arc_cp_board_penaltiesCardsCount {
+    height: 42px;
+    width: 29px;
+    position: relative;
+    float: left;
+    background-image: url('img/back.jpg');
+    background-size: 300%;
+    background-position-x: 35px;
+    padding: 3px;
+    text-shadow: 0px 0px 2px #1c8fb2;
+    color: #FFF;
+    box-shadow: 5px 5px 5px 0px rgba(0,0,0,0.4);
+    border-radius: 8% !important;
+    margin-right: 5px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
+.arc_cp_board_pileCardsCount {
+    background-position-x: -35px;
+
+}
+.arc_cp_board_penaltiesCardsCount {
+    background-position-x: 35px;
+}
+.arc_cp_board_pileCardsCount.arc_empty,
+.arc_cp_board_penaltiesCardsCount.arc_empty {
+    opacity: 0.3;
+}
+.arc_cp_board_powers {
+    float: right;
+    margin-top: 7px;
+    max-width: 60%;
+}
+.arc_cp_board_powers .arc_minified_animals {
+    float: right;
+    margin-right: 5px;
+}
+.arc_cp_board_powers span {
+    width: 100%;
+    display: block;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-wrap: nowrap;
+    overflow: hidden;
+}

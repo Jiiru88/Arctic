@@ -1,0 +1,63 @@
+{
+  "100": {
+    "name": "Enable Animations (Pulse)",
+    "needReload": true,
+    "values": {
+      "1": {
+        "name": "Enabled",
+        "cssPref": "arc_pref_animations_on"
+      },
+      "2": {
+        "name": "Disabled",
+        "cssPref": "arc_pref_animations_off"
+      }
+    },
+    "default": 1
+  },
+  "101": {
+    "name": "Font",
+    "needReload": true,
+    "values": {
+      "1": {
+        "name": "Enabled official font on all elements",
+        "cssPref": "arc_pref_cinzel_on"
+      },
+      "2": {
+        "name": "Disabled official font on Action bar, Buttons & History log",
+        "cssPref": "arc_pref_cinzel_off"
+      }
+    },
+    "default": 2
+  },
+  "103": {
+    "name": "End game warnings style",
+    "needReload": true,
+    "values": {
+      "1": {
+        "name": "White",
+        "cssPref": "arc_pref_permanent_message_white"
+      },
+      "2": {
+        "name": "Red (visibility improved)",
+        "cssPref": "arc_pref_permanent_message_red"
+      }
+    },
+    "default": 2
+  },
+  "104": {
+    "name": "Power active help",
+    "needReload": true,
+    "values": {
+      "1": {
+        "name": "Bubbles"
+      },
+      "2": {
+        "name": "Messages"
+      },
+      "3": {
+        "name": "Bubbles and Messages"
+      }
+    },
+    "default": 3
+  }
+}

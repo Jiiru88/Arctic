@@ -1,0 +1,101 @@
+{
+    "table": {
+        "turns_number": {
+            "id": 10,
+            "name": "Number of turns",
+            "type": "int"
+        }
+    },
+    "player": {
+        "fox_series_score": {
+            "id": 18,
+            "name": "Fox sequences score",
+            "type": "int"
+        },
+        "moose_series_score": {
+            "id": 19,
+            "name": "Moose sequences score",
+            "type": "int"
+        },
+        "walrus_series_score": {
+            "id": 20,
+            "name": "Walrus sequences score",
+            "type": "int"
+        },
+        "orca_series_score": {
+            "id": 21,
+            "name": "Orca sequences score",
+            "type": "int"
+        },
+        "puffin_series_score": {
+            "id": 22,
+            "name": "Puffin sequences score",
+            "type": "int"
+        },
+        "bear_series_score": {
+            "id": 23,
+            "name": "Polar bear sequences score",
+            "type": "int"
+        },
+        "different_animal_series_count": {
+            "id": 24,
+            "name": "Different animal sequences score",
+            "type": "int"
+        },
+        "totem_scoring": {
+            "id": 25,
+            "name": "Totem position in landscape score",
+            "type": "int"
+        },
+        "penalties_score": {
+            "id": 26,
+            "name": "Penalties score",
+            "type": "int"
+        },
+        "score": {
+            "id": 27,
+            "name": "Total score",
+            "type": "int"
+        },
+        "cards_on_stack_count": {
+            "id": 16,
+            "name": "Number of cards in the pile",
+            "type": "int"
+        },
+        "cards_on_penalties_count": {
+            "id": 17,
+            "name": "Number of cards in Penalty Zone",
+            "type": "int"
+        },
+        "turns_with_fox_power": {
+            "id": 10,
+            "name": "Number of turns with fox power",
+            "type": "int"
+        },
+        "turns_with_moose_power": {
+            "id": 11,
+            "name": "Number of turns with moose power",
+            "type": "int"
+        },
+        "turns_with_walrus_power": {
+            "id": 12,
+            "name": "Number of turns with walrus power",
+            "type": "int"
+        },
+        "turns_with_orc_power": {
+            "id": 13,
+            "name": "Number of turns with orc power",
+            "type": "int"
+        },
+        "turns_with_puffin_power": {
+            "id": 14,
+            "name": "Number of turns with puffin power",
+            "type": "int"
+        },
+        "turns_with_bear_power": {
+            "id": 15,
+            "name": "Number of turns with bear power",
+            "type": "int"
+        }
+    }
+}
